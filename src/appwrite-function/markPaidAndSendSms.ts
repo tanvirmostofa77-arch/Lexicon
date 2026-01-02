@@ -40,14 +40,14 @@ async function sendSms(to: string, message: string) {
   const phone = normalizePhone(to);
   if (!phone) return { success: false, response: 'Invalid phone' };
 
-  const res = await fetch(`${process.env.TEXTBEE_BASE_URL}/sms/send`, {
+  const res = await fetch(`${process.env.VITE_TEXTBEE_BASE_URL}/sms/send`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.TEXTBEE_API_KEY}`,
+      'Authorization': `Bearer ${process.env.VITE_TEXTBEE_API_KEY}`,
     },
     body: JSON.stringify({
-      device_id: process.env.TEXTBEE_DEVICE_ID,
+      device_id: process.env.VITE_TEXTBEE_DEVICE_ID,
       phone: phone,
       message: message,
     }),
